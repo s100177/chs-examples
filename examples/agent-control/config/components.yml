@@ -1,0 +1,23 @@
+# 智能体控制组件配置
+
+reservoir_1:
+  type: "Reservoir"
+  parameters:
+    name: "主水库"
+    initial_level: 95.0
+    capacity_curve: [[0, 800000], [95, 1800000], [100, 2000000]]
+
+reservoir_2:
+  type: "Reservoir"
+  parameters:
+    name: "下游水库"
+    initial_level: 85.0
+    capacity_curve: [[0, 500000], [85, 1200000], [100, 1500000]]
+
+gate_1:
+  type: "Gate"
+  parameters:
+    name: "调节闸门"
+    width: 4.0
+    height: 3.5
+    initial_opening: 0.7

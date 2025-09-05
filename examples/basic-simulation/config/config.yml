@@ -1,0 +1,18 @@
+# 基础仿真配置
+
+simulation:
+  duration: 24      # 仿真时长 (小时)
+  time_step: 1      # 时间步长 (小时)
+  start_time: "2025-01-01 00:00:00"  # 开始时间
+
+components_file: "config/components.yml"
+topology_file: "config/topology.yml"
+agents_file: "config/agents.yml"
+
+output:
+  variables:
+    - "reservoir_1.level"
+    - "pipe_1.flow"
+    - "gate_1.opening"
+  format: "csv"
+  directory: "results"

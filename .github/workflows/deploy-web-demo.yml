@@ -1,0 +1,45 @@
+name: 部署Web演示应用
+
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+
+    - name: 设置Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: '16'
+
+    - name: 设置Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.11'
+
+    - name: 安装Python依赖
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r web-demo/requirements.txt
+
+    - name: 安装前端依赖
+      run: |
+        cd web-demo/frontend
+        npm install
+
+    - name: 构建前端应用
+      run: |
+        cd web-demo/frontend
+        npm run build
+
+    - name: 部署到GitHub Pages
+      uses: peaceiris/actions-gh-pages@v3
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_dir: ./web-demo/frontend/dist
+        destination_dir: web-demo

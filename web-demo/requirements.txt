@@ -1,0 +1,25 @@
+# CHS-SDK Web演示应用依赖
+
+# 核心依赖
+chs-core>=0.1.0
+chs-agent>=0.1.0
+chs-ai>=0.1.0
+chs-analyze>=0.1.0
+
+# Web框架
+fastapi>=0.68.0
+uvicorn>=0.15.0
+pydantic>=1.8.0
+
+# 数据处理
+numpy>=1.21.0
+pandas>=1.3.0
+scipy>=1.7.0
+
+# 可视化
+matplotlib>=3.5.0
+seaborn>=0.11.0
+
+# 工具
+pyyaml>=5.4.0
+click>=8.0.0

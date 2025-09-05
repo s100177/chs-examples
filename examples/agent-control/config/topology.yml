@@ -1,0 +1,10 @@
+# 智能体控制拓扑配置
+
+connections:
+  - from: reservoir_1
+    to: gate_1
+    type: "outflow"
+  
+  - from: gate_1
+    to: reservoir_2
+    type: "flow"

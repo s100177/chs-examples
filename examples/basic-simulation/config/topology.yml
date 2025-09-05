@@ -1,0 +1,10 @@
+# 基础仿真拓扑配置
+
+connections:
+  - from: reservoir_1
+    to: pipe_1
+    type: "outflow"
+  
+  - from: pipe_1
+    to: gate_1
+    type: "flow"

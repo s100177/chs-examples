@@ -1,0 +1,46 @@
+name: 测试CHS-SDK示例
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: [3.8, 3.9, '3.10', '3.11']
+
+    steps:
+    - uses: actions/checkout@v3
+
+    - name: 设置Python ${{ matrix.python-version }}
+      uses: actions/setup-python@v4
+      with:
+        python-version: ${{ matrix.python-version }}
+
+    - name: 安装依赖
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r requirements.txt
+
+    - name: 运行基础仿真示例测试
+      run: |
+        cd examples/basic-simulation
+        python run.py
+
+    - name: 运行智能体控制示例测试
+      run: |
+        cd examples/agent-control
+        python run.py
+
+    - name: 运行AI建模示例测试
+      run: |
+        cd examples/ai-modeling
+        python run.py
+
+    - name: 运行单元测试
+      run: |
+        pytest tests/ -v

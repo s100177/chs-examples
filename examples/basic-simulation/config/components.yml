@@ -1,0 +1,24 @@
+# 基础仿真组件配置
+
+reservoir_1:
+  type: "Reservoir"
+  parameters:
+    name: "主水库"
+    initial_level: 100.0  # 初始水位 (米)
+    capacity_curve: [[0, 1000000], [100, 2000000]]  # 库容曲线 [水位, 库容]
+
+pipe_1:
+  type: "Pipe"
+  parameters:
+    name: "主输水管道"
+    length: 1000.0  # 管道长度 (米)
+    diameter: 2.0   # 管道直径 (米)
+    roughness: 0.01 # 粗糙系数
+
+gate_1:
+  type: "Gate"
+  parameters:
+    name: "主控制闸门"
+    width: 5.0      # 闸门宽度 (米)
+    height: 3.0     # 闸门高度 (米)
+    initial_opening: 0.8  # 初始开度 (0-1)
